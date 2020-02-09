@@ -13,11 +13,10 @@ function setup() {
   Camara = createCapture({
     audio: false,
     video: {
-      facingMode: {
-        exact: 'environment'
-      }
+      facingMode: 'environment'
     }
   });
+
   Camara.size(320, 240);
   Camara.hide();
 
