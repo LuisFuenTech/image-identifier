@@ -14,7 +14,14 @@ function setup() {
     .style('margin', 'auto')
     .style('display', 'block');
   background(255, 0, 0);
-  Camara = createCapture(VIDEO);
+  Camara = createCapture({
+    audio: false,
+    video: {
+      facingMode: {
+        exact: 'environment'
+      }
+    }
+  });
   Camara.size(320, 240);
   Camara.hide();
 
