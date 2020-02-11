@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tutorial</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="index.html"
+              >Inicio <span class="sr-only">(current)</span></a
+            >
+            <a class="nav-item nav-link active" href="tutorial.html">Tutorial</a>
+            <a class="nav-item nav-link active" href="about.html">Info</a>
+          </div>
+        </div>
+      </nav>
+      <div class="" markdown="1">
+        <h1>
+            <a id="user-content-aplicación" class="anchor" href="#aplicaci%C3%B3n"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aplicación</h1>
+        <p>La aplicación en su versión permite acceder a la cámara trasera del teléfono, en su versión web permite acceder a la
+            cámara principal de la computadora, con el objeto de enfocar a un objeto, entrenar a la IA con la imagen del objeto
+            y asignándole un nombre. El nombre se introduce en el texto box y se presiona el botón “Entrenar” n veces (se
+            recomienda que n &gt;= 10) para enseñarle a nuestra IA que dicho objeto tiene el nombre que le hemos asignado.
+            Cuando enfoquemos el objeto aprendido o uno con las características similares, será capaz de reconocerlo y el nombre
+            aparecerá donde antes estaba el texto “Modelo Listo”.</p>
+        <h1>
+            <a id="user-content-librerías" class="anchor" href="#librer%C3%ADas"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Librerías</h1>
+        <ul>
+            <li>
+                <strong>P5.js:</strong> Es una biblioteca de JavaScript para la codificación creativa, con un enfoque en hacer
+                que la codificación sea accesible e inclusiva para artistas, diseñadores, educadores, principiantes y cualquier
+                otra persona</li>
+            <li>
+                <strong>Ml5.js:</strong> Tiene como objetivo hacer que el aprendizaje automático sea accesible para una amplia
+                audiencia de artistas, programadores creativos y estudiantes. La biblioteca proporciona acceso a algoritmos y
+                modelos de aprendizaje automático en el navegador, basándose en TensorFlow.js sin otras dependencias externas
+            </li>
+        </ul>
+        <h1>
+            <a id="user-content-desarrollo" class="anchor" href="#desarrollo"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desarrollo</h1>
+        <h2>
+            <a id="user-content-cargar-librerías" class="anchor" href="#cargar-librer%C3%ADas"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cargar librerías</h2>
+        <p>En el archivo principal index.html dentro de las etiquetas <code>&lt;head&gt;</code> se coloca todas las librerías
+            que mencionadas anteriormente son esenciales para poder hacer un aprendizaje automático.</p>
+        <div class="highlight highlight-source-js">
+            <pre>	<span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>script<span class="pl-k">&gt;</span>
+            <span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>script<span class="pl-k">&gt;</span>
+            <span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>https://unpkg.com/ml5@0.2.1/dist/ml5.min.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>script<span class="pl-k">&gt;</span></pre>
+        </div>
+        <h1>
+            <a id="user-content-cargar-archivo-contendor" class="anchor" href="#cargar-archivo-contendor"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cargar archivo contendor
+        </h1>
+        <p>Sketch.js es el corazón de la aplicación. Está el script responsable de la captura de los datos desde la cámara,
+            entrenamiento de la IA y la exportación de la neurona entrenada. Este script se carga en el indx.html contiguo a las
+            librerías anteriores.</p>
+        <div class="highlight highlight-source-js">
+            <pre>	<span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>sketch.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span>script<span class="pl-k">&gt;</span></pre>
+        </div>
+        <h1>
+            <a id="user-content-funciones-principales" class="anchor" href="#funciones-principales"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Funciones principales</h1>
+        <div class="highlight highlight-source-js">
+            <pre>	<span class="pl-k">function</span> <span class="pl-en">setup</span>() {}
+                
+            <span class="pl-k">function</span> <span class="pl-en">draw</span>() {}
+                
+            <span class="pl-k">function</span> <span class="pl-en">ModeloListo</span>() {}
+                
+            <span class="pl-k">function</span> <span class="pl-en">clasificar</span>() {}
+                
+            <span class="pl-k">function</span> <span class="pl-en">EntrenarTexBox</span>() {}</pre>
+        </div>
+        <ul>
+            <li>
+                <strong><code>function setup()</code></strong>: Es ejecutada una vez, cuando el programa empieza. Es usada para
+                definir propiedades iniciales como amaño de la pantalla y color de fondo y para cargar medios como imágenes y
+                tipografías cuando el programa empieza. Solo puede haber una función setup() en cada programa y no debe ser
+                llamada después de su ejecución inicial.</li>
+            <li>
+                <strong><code>function draw()</code></strong>: Es ejecutada después de setup(), y ejecuta contínuamente las
+                líneas de código dentro de su bloque hasta que el programa es detenido.</li>
+            <li>
+                <strong><code>function ModeloListo()</code></strong>: Es ejecutada para notificar a la aplicación que el objeto
+                modelo ha sido cargado y está listo para ser utilizado.</li>
+            <li>
+                <strong><code>function clasificar()</code></strong>: Es ejecutada cada 500ms, tiene la responsabilidad de
+                capturar la imagen de la cámara, aplicarle el algoritmo KNN (k-nearest neighbors) e imprimir el resultado o
+                nombre de la imagen identificada.</li>
+            <li>
+                <strong><code>function EntrenarTextBox()</code></strong>: Es ejecutada cuando se desea entrenar a la neurona con
+                la imagen y el nombre ingresado en el textbox.</li>
+        </ul>
+        <h2>
+            <a id="user-content-funtion-setup" class="anchor" href="#funtion-setup"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>funtion setup()</code>
+        </h2>
+        <p>Dentro de la función setup() se crea el canvas (donde se proyectará el video tomado de la cámara). La función
+            createCanvas recibe como parámetros el alto y el ancho del canva en pixeles; las funciones encadenada class y style
+            se usan para agregarle estilos y clase tipo html.</p>
+        <div class="highlight highlight-source-js">
+            <pre>	<span class="pl-en">createCanvas</span>(<span class="pl-c1">320</span>, <span class="pl-c1">240</span>)
+            .<span class="pl-en">class</span>(<span class="pl-s"><span class="pl-pds">'</span>container text-center<span class="pl-pds">'</span></span>)
+            .<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>padding<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>)
+            .<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>margin<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>auto<span class="pl-pds">'</span></span>)
+            .<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>display<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>block<span class="pl-pds">'</span></span>);</pre>
+        </div>
+        <p>La función <code>createCapture()</code> se usa para crear la instancia de la cámara, recibe como parámetro la
+            variable por default VIDEO o un objeto con la configuración customizada.</p>
+        <div class="highlight highlight-source-js">
+            <pre>	Camara <span class="pl-k">=</span> <span class="pl-en">createCapture</span>(<span class="pl-c1">VIDEO</span>);
+            <span class="pl-smi">Camara</span>.<span class="pl-c1">size</span>(<span class="pl-c1">320</span>, <span class="pl-c1">240</span>);
+            <span class="pl-smi">Camara</span>.<span class="pl-en">hide</span>();</pre>
+        </div>
+        <p>El modelo de la neurona se obtiene del método que provee el objeto global de <code>ml5</code>,
+            <code>featureExtractor()</code>, recibe el nombre del modelo que usuará embebido, MobileNet (una serie de modelos
+            basados en TensorFlow, pero diseñados para que puedan ser usados en dispositivos de baja potencia), y la función
+            callback <code>ModeloListo()</code> para notificar cuando esté listo el objeto.
+            El objeto con el algoritmo KNN se optiene a través de la función <code>KNNClassifier()</code> que provee
+            <code>ml5</code>.</p>
+        <div class="highlight highlight-source-js">
+            <pre>	modelo <span class="pl-k">=</span> <span class="pl-smi">ml5</span>.<span class="pl-en">featureExtractor</span>(<span class="pl-s"><span class="pl-pds">'</span>MobileNet<span class="pl-pds">'</span></span>, ModeloListo);
+            knn <span class="pl-k">=</span> <span class="pl-smi">ml5</span>.<span class="pl-en">KNNClassifier</span>();</pre>
+        </div>
+        <p>Las funciones <code>createInput()</code> y <code>createButton()</code> con propias de <code>P5JS</code> y se usan
+            para crear el textbox y los botones que se usa en el ejemplo. La función <code>mousePressed()</code> ejecuta un
+            evento tipo click por cada botón.</p>
+        <div class="highlight highlight-source-js">
+            <pre>	InputTexbox <span class="pl-k">=</span> <span class="pl-en">createInput</span>(<span class="pl-s"><span class="pl-pds">'</span>nombre<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">InputTexbox</span>.<span class="pl-en">class</span>(<span class="pl-s"><span class="pl-pds">'</span>form-control col-6<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">InputTexbox</span>.<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>margin<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>5px<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">InputTexbox</span>.<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>padding<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>6px<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">InputTexbox</span>.<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>);
+                
+            BotonTexBox <span class="pl-k">=</span> <span class="pl-en">createButton</span>(<span class="pl-s"><span class="pl-pds">'</span>Entrenar<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">BotonTexBox</span>.<span class="pl-en">class</span>(<span class="pl-s"><span class="pl-pds">'</span>btn btn-success<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">BotonTexBox</span>.<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>margin<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>5px<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">BotonTexBox</span>.<span class="pl-c1">style</span>(<span class="pl-s"><span class="pl-pds">'</span>padding<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>6px<span class="pl-pds">'</span></span>);
+            <span class="pl-smi">BotonTexBox</span>.<span class="pl-en">mousePressed</span>(EntrenarTextBox);</pre>
+        </div>
+        <h2>
+            <a id="user-content-function-draw" class="anchor" href="#function-draw"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>function draw()</code>
+        </h2>
+        <p>Dentro de la función <code>draw()</code> se posiciona el canvas de la cámara, se crea el botón <em>Entrenar</em>.
+            Luego se valida si hay objetos aprendidos, a travé de la función <code>getNumLabels()</code> (propia del objeto
+            <code>knn</code>) para establecer que la función clasificadora sea ejecutada cada 500ms.</p>
+        <pre><code>function draw() {
+        image(Camara, 0, 0, 320, 240);
+        BotonTexBox.html('Entrenar');
+        if (knn.getNumLabels() &gt; 0 &amp;&amp; !Clasificando) {
+        setInterval(clasificar, 500);
+        Clasificando = true;
+        }
+        }
+        </code></pre>
+        <h2>
+            <a id="user-content-function-clasificar" class="anchor" href="#function-clasificar"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>function clasificar()</code>
+        </h2>
+        <p>Dentro de la función <code>clasificar()</code> se extrae la imagen de la cámara con el método <code>infer()</code> de
+            ml5 y recibe como parámetro la instancia de la cámara previamente configurada.
+            La imagen captura es pasada como argumento la función <code>classify()</code> del objeto knn. Además recibe como
+            parámetro una función que recibe los errores y resultados al haber aplicado la función <code>classify()</code>. Si
+            existe algún error, el navegador en capaz de imprirlo. Si hubo éxito, se renderiza una etiqueta de texto “Es un …”
+            con el nombre del objeto o imagen reconocido.</p>
+        <h2>
+            <a id="user-content-function-entrenartextbox" class="anchor" href="#function-entrenartextbox"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>function EntrenarTextBox()</code>
+        </h2>
+        <p>Esta función se ejecuta cuando se presiona el botón “Entrenar” y captura la image, y la guarda en la neurona
+            asociándola con el valor que esté en el textBox. De esa forma le enseñamos nueva información a la neurona.</p>
+        <div class="highlight highlight-source-js">
+            <pre><span class="pl-k">function</span> <span class="pl-en">EntrenarTextBox</span>() {
+        <span class="pl-k">const</span> <span class="pl-c1">Imagen</span> <span class="pl-k">=</span> <span class="pl-smi">modelo</span>.<span class="pl-en">infer</span>(Camara);
+        <span class="pl-smi">knn</span>.<span class="pl-en">addExample</span>(Imagen, <span class="pl-smi">InputTexbox</span>.<span class="pl-c1">value</span>());
+        }</pre>
+        </div>
+        <h1>
+            <a id="user-content-resumen" class="anchor" href="#resumen"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resumen</h1>
+        <ol>
+            <li>Abrir la apliación web</li>
+            <li>Enfocar un objeto</li>
+            <li>Escribir en el textBox el nombre del objeto</li>
+            <li>Presionar el menos 10 veces el botón “entrenar”</li>
+            <li>Repetir los pasos 2 al 4, con más de 2 objetos.</li>
+            <li>Después de entrenar a la neurona, enfocar la cámara en los objetos para visualizar el resultado en la etiqueta
+                de texto “Es un…”</li>
+        </ol>
+        <h1>
+            <a id="user-content-demostración" class="anchor" href="#demostraci%C3%B3n"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demostración</h1>
+        <h2>
+            <a id="user-content-entrenamiento" class="anchor" href="#entrenamiento"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entrenamiento</h2>
+        <p>Se entrena con una modena de $1000 y $500, con un reloj y con un arduino.
+            
+        </p>
+        <h2>
+            <a href="https://camo.githubusercontent.com/dc1d5718537e36b5abe57333394752de5dd7de60/68747470733a2f2f692e696d6775722e636f6d2f5a6478667a395a2e706e67"
+                target="_blank"
+                rel="nofollow"><img src="https://camo.githubusercontent.com/dc1d5718537e36b5abe57333394752de5dd7de60/68747470733a2f2f692e696d6775722e636f6d2f5a6478667a395a2e706e67" alt="" data-canonical-src="https://i.imgur.com/Zdxfz9Z.png" style="max-width:100%;"></a>
+            
+        </h2>
+        <h2>
+            <a id="user-content-después-del-entrenamiento" class="anchor" href="#despu%C3%A9s-del-entrenamiento"
+                aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Después del entrenamiento
+        </h2>
+        <p><a href="https://camo.githubusercontent.com/5484af6eccea32bb8fe40e35181b08a987d2021f/68747470733a2f2f692e696d6775722e636f6d2f3951376634394d2e706e67"
+                target="_blank"
+                rel="nofollow"><img src="https://camo.githubusercontent.com/5484af6eccea32bb8fe40e35181b08a987d2021f/68747470733a2f2f692e696d6775722e636f6d2f3951376634394d2e706e67" alt="" data-canonical-src="https://i.imgur.com/9Q7f49M.png" style="max-width:100%;"></a>
+        </p>
+        <p>Aunque la moneda tiene otra posición o se le mostraron otros relojes, la neurona asocia las característica similares
+            de estos objetos y los compara con la información que aprendió de los objetos anteriores y así nos empieza a dar
+            resultados acertados.</p>
+      </div>
+  </body>
+</html>
